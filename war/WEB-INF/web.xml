@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/log4j.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
+		<param-value>/WEB-INF/views/views.xml</param-value>
+	</context-param>
+	<!-- <servlet> <servlet-name>JunkyardInventory</servlet-name> <servlet-class>com.ji.JunkyardInventoryServlet</servlet-class> 
+		</servlet> -->
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<!-- <servlet-mapping> <servlet-name>JunkyardInventory</servlet-name> <url-pattern>/JunkyardInventory</url-pattern> 
+		</servlet-mapping> -->
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+ 	<jsp-config>
+		<taglib>
+			<taglib-uri>/tiles</taglib-uri>
+			<taglib-location>/WEB-INF/tld/tiles-jsp.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+
+	<listener>
+		<listener-class>org.apache.tiles.web.startup.TilesListener</listener-class>
+	</listener>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+</web-app>
